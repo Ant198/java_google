@@ -29,9 +29,15 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.28.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>${testng}</version>
+            <version>7.10.2</version>
         </dependency>
 
         <dependency>
@@ -43,7 +49,8 @@
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>${selenide}</version>
+            <version>7.7.0</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
