@@ -1,6 +1,5 @@
 package com.demo;
 
-import com.codeborne.selenide.SelenideElement;
 import com.demo.core.base.BaseTest;
 import com.demo.pages.Pages;
 import io.qameta.allure.Epic;
@@ -23,6 +22,6 @@ public class FirstTest extends BaseTest {
         Pages.homePage().search(searchWord);
         Pages.resultPage().waitForResult();
 
-        Assert.assertTrue(Pages.resultPage().checkForResult(searchWord), "not all matches");
+        Assert.assertTrue(Pages.resultPage().checkForResult(searchWord), "not all match");
     }
 }
