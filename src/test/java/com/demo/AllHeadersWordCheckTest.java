@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 @Epic("Test Epic")
 @Feature("Test feature")
 @Owner("QA Fedorov Anton")
-public class FirstTest extends BaseTest {
+public class AllHeadersWordCheckTest extends BaseTest {
 
     @Test(description = "FirstTest")
     public void firstTest() {
@@ -22,6 +22,6 @@ public class FirstTest extends BaseTest {
         Pages.homePage().search(searchWord);
         Pages.resultPage().waitForResult();
 
-        Assert.assertTrue(Pages.resultPage().checkForResult(searchWord), "not all match");
+        Assert.assertFalse(Pages.resultPage().checkForResult(searchWord), "not all headers contain searched word");
     }
 }

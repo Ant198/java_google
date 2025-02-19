@@ -5,15 +5,11 @@ import org.openqa.selenium.By;
 import java.util.List;
 
 public class ResultPage extends PageTools {
-    private final By headers = By.xpath("//h3[@class='LC20lb MBeuO DKV0Md']");
+    private final By headers = By.xpath("//div[@class='yuRUbf']//a//h3");
 
-    public List<String> getTexts() {
-        return getElementsText(headers);
-    }
-
-     public boolean checkForResult(String text) {
+   public boolean checkForResult(String text) {
         boolean hasWord = true;
-        for (String header : getTexts()) {
+        for (String header : getElementsText(headers)) {
             if (!header.contains(text)) {
                hasWord = false;
                break;
