@@ -22,6 +22,6 @@ public class AllHeadersWordCheckTest extends BaseTest {
         Pages.homePage().search(searchWord);
         Pages.resultPage().waitForResult();
 
-        Assert.assertTrue(Pages.resultPage().checkForResult(searchWord), "some headers don't contain searched word");
+        Assert.assertTrue(Pages.resultPage().checkForResult(searchWord), "some headers don't contain the searched word");
     }
 }
