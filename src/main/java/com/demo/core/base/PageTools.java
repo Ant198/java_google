@@ -48,7 +48,6 @@ public class PageTools extends AllureLogger {
     /**
      * Should be
      */
-    /*
     protected ElementsCollection shouldBe(CollectionCondition condition, By by, Object... args) {
         return $$(byLocator(by, args)).shouldBe(condition);
     }
@@ -56,11 +55,11 @@ public class PageTools extends AllureLogger {
     protected SelenideElement shouldBe(Condition condition, By by, Object... args) {
         return $(byLocator(by, args)).shouldBe(condition);
     }
-*/
+
     protected SelenideElement shouldMatchText(String pattern, By by, Object... args) {
         return $(byLocator(by, args)).should(Condition.matchText(pattern));
     }
-/*
+
     protected void shouldNotBeEmpty(By by, Object... args) {
         $(byLocator(by, args)).shouldNotBe(Condition.empty);
     }
@@ -73,16 +72,14 @@ public class PageTools extends AllureLogger {
         $(byLocator(by, args)).shouldHave(Condition.cssClass(className));
     }
 
-     */
-
     /**
      * Main Actions
      */
     protected void click(By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + ", element --> " + byLocator(by, args));
-        $(by).shouldBe(Condition.visible).click();
+        shouldBe(Condition.visible, by, args).click();
     }
-/*
+
     protected void clickIfExist(By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + ", element --> " + byLocator(by, args));
         shouldBe(Condition.exist, by, args).click();
@@ -113,11 +110,11 @@ public class PageTools extends AllureLogger {
         builder.moveToElement(getWebElement(byLocator(by, args))).click();
         builder.perform();
     }
-*//*
+
     protected void type(String text, By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + " '" + text);
         wipeText(by, args);
-        $(by).shouldBe(Condition.visible).append(text);
+        shouldBe(Condition.visible, by, args).append(text);
     }
 
     protected void jsType(String text, By by, Object... args) {
@@ -168,12 +165,12 @@ public class PageTools extends AllureLogger {
         wipeText(by, args);
         shouldBe(Condition.enabled, by, args).uploadFile(filePaths.stream().map(File::new).toArray(File[]::new));
     }
-*/
+
     protected void typeWithoutWipe(String text, By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + " '" + text + "', element --> " + byLocator(by, args));
-        $(by).shouldBe(Condition.visible).append(text);
+        shouldBe(Condition.visible, by, args).append(text);
     }
-/*
+
     protected void wipeText(By by, Object... args) {
         int stringSize = shouldBe(Condition.enabled, by, args).getWrappedElement().getAttribute("value").length();
         for (int i = 0; i < stringSize; i++) {
@@ -201,12 +198,11 @@ public class PageTools extends AllureLogger {
         getActions().sendKeys(Keys.ENTER).perform();
 
     }
-    */
 
     protected void waitForElementVisibility(By by, Object... args) {
-        $(by).shouldBe(Condition.visible);
+        shouldBe(Condition.visible, by, args);
     }
-/*
+
     protected void waitForElementPresent(By by, Object... args) {
         shouldBe(Condition.exist, by, args);
     }
@@ -228,23 +224,16 @@ public class PageTools extends AllureLogger {
         shouldBe(Condition.enabled, by, args);
     }
 
- */
-
     /**
      * Is condition
      */
-
     /*Working without wait*/
-    /*
     protected boolean isCondition(Condition condition, By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + ", condition --> " + condition.getName() + ", element --> " + byLocator(by, args));
         return getSelenideElement(by, args).is(condition);
     }
 
-     */
-
     /*Working with wait*/
-    /*
     protected boolean isElementVisible(By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + ", element --> " + byLocator(by, args));
         return isCondition(Condition.visible, by, args);
@@ -264,7 +253,6 @@ public class PageTools extends AllureLogger {
         logInfo(getPreviousMethodNameAsText() + ", element --> " + byLocator(by, args));
         return isCondition(Condition.checked, by, args);
     }
-    */
 
 //    protected boolean isElementExist{
 //        return isCondition()
@@ -274,7 +262,6 @@ public class PageTools extends AllureLogger {
     /**
      * Getters
      */
-    /*
     protected String getElementText(By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + ", element --> " + byLocator(by, args));
         return shouldBe(Condition.enabled, by, args).text();
@@ -310,12 +297,12 @@ public class PageTools extends AllureLogger {
         Selenide.sleep(waitTimeout * 1000L);
         return shouldBe(sizeGreaterThanOrEqual(0), by, args);
     }
-*/
+
     protected List<String> getElementsText(By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + ", elements --> " + byLocator(by, args));
-        return $$(by).shouldBe(sizeGreaterThan(0)).texts();
+        return shouldBe(sizeGreaterThan(0), by, args).texts();
     }
-/*
+
     protected List<String> getElementsTextWithWait(int waitTimeout, By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + ", elements --> " + byLocator(by, args));
         Selenide.sleep(waitTimeout * 1000L);
@@ -343,12 +330,9 @@ public class PageTools extends AllureLogger {
         Selenide.executeJavaScript("arguments[0].shadowRoot.querySelector(\"#sidebar\").shadowRoot.querySelector(\"print-preview-button-strip\").shadowRoot.querySelector(\"div > cr-button.cancel-button\")", getWebElement(byLocator(by, args)));
     }
 
-     */
-
     /**
      * Work with colors
      */
-    /*
     protected boolean isColorMatch(String actual, String expected) {
         Color actualColor = Color.fromString(actual);
         Color expectedColor = Color.fromString(expected);
@@ -364,6 +348,4 @@ public class PageTools extends AllureLogger {
         }
         return null;
     }
-
-     */
 }

@@ -23,6 +23,6 @@ public class FirstTest extends BaseTest {
         Pages.homePage().search(searchWord);
         Pages.resultPage().waitForResult();
 
-        Assert.assertFalse(Pages.resultPage().checkForResult(searchWord), "not all matches");
+        Assert.assertTrue(Pages.resultPage().checkForResult(searchWord), "not all matches");
     }
 }

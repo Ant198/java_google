@@ -15,4 +15,5 @@ public class HomePage extends PageTools {
     public void waitForSearchForm() {
         waitForElementVisibility(searchField);
     }
+
 }
